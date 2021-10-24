@@ -8,6 +8,8 @@ dp = Dispatcher(bot)
 phrases = ["Привет, очень рада тебя видеть ", "Приветик, меня зовут Наташа, познакомимся? Я люблю читать мангу и смотреть аниме, а ты ", "Ой, привет, расскажи о себе "]
 
 
+
+
 @dp.message_handler(commands="start")
 async def start(message: types.Message):
     file_db = open('./fake_db.py')
@@ -30,3 +32,19 @@ async def stop(message: types.Message):
     await message.answer(f"Notifications stopped")
 
     return "ok"
+
+@dp.message_handler(commands="start")
+async def start(message: types.Message):
+    s = ""
+    if "историю про" in message.text:
+        s = message.text.split("про ")[1]
+
+    query = {
+          "option": "Hero Story Villian",
+          "main_field_value": message.from_user.first_name,
+          "secondary_field_value": s,
+          "tone": "Empathetic"
+        }
+    r = requests.post("http://212.193.50.2:777/two_field_tools", json=query)
+    print(r.text)
+    await message.answer(f"")
