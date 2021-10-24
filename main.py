@@ -1,4 +1,5 @@
 from fastapi import FastAPI
+from bot import TOKEN, dp, bot
 from aiogram import types, Dispatcher, Bot
 from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
