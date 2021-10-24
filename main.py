@@ -21,10 +21,6 @@ app.add_middleware(
 WEBHOOK_PATH = f"/bot/{TOKEN}"
 WEBHOOK_URL = "https://c203-62-84-119-83.ngrok.io" + WEBHOOK_PATH
 
-app.include_router(events.router)
-app.include_router(notifications.router)
-
-
 @app.on_event("startup")
 async def on_startup():
     webhook_info = await bot.get_webhook_info()
