@@ -1,9 +1,5 @@
 from fastapi import FastAPI
 from aiogram import types, Dispatcher, Bot
-from app.scripts.getTop import getTopBalances
-from app.scripts.getBalance import getBalances
-from app.scripts.firstN import getFirstWallets
-from app.scripts.getTotal import totalWallets, totalBalances
 from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
 
