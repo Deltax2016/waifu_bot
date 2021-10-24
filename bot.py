@@ -45,7 +45,7 @@ async def start(message: types.Message):
           "option": "Hero Story Villian",
           "main_field_value": message.from_user.first_name,
           "secondary_field_value": s,
-          "tone": "Empathetic"
+          "tone": "Friendly"
         }
     r = requests.post("http://212.193.50.2:777/two_field_tools", json=query)
     kek = r.json()['texts'][0]
