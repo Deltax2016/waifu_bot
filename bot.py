@@ -1,6 +1,7 @@
 from aiogram import Dispatcher, Bot, types
 from random import *
 import requests
+from googletrans import Translator
 
 TOKEN = "1989718665:AAFCneR0UwDLssi6ONAVaXAYXHgMZR0P-94"
 bot = Bot(token=TOKEN)
@@ -44,10 +45,22 @@ async def start(message: types.Message):
 
     query = {
           "option": "Hero Story Villian",
-          "main_field_value": "я",
+          "main_field_value": message.from_user.id,
           "secondary_field_value": s,
           "tone": "Friendly"
         }
     r = requests.post("http://212.193.50.2:777/two_field_tools", json=query)
     kek = r.json()['texts'][0]
-    await message.answer(kek)
+    translator = Translator()
+    translations = translator.translate([kek], dest='ru')
+    
+    await message.answer(translations[0].text)
+
+
+
+
+
+
+
+
+
