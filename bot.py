@@ -1,5 +1,5 @@
 from aiogram import Dispatcher, Bot, types
-from random import random
+from random import *
 
 TOKEN = "1989718665:AAFCneR0UwDLssi6ONAVaXAYXHgMZR0P-94"
 bot = Bot(token=TOKEN)
@@ -16,7 +16,7 @@ async def start(message: types.Message):
     db[message.from_user.id] = {"stage": 0}
     file_db = open('./fake_db.py','w')
     file_db.write(str(db))
-    text = random.choice(phrases)
+    text = choice(phrases)
     await message.answer(f"{text}{message.from_user.first_name}")
 
 @dp.message_handler(commands="stop")
