@@ -1,5 +1,6 @@
 from aiogram import Dispatcher, Bot, types
 from random import *
+import requests
 
 TOKEN = "1989718665:AAFCneR0UwDLssi6ONAVaXAYXHgMZR0P-94"
 bot = Bot(token=TOKEN)
@@ -33,11 +34,12 @@ async def stop(message: types.Message):
 
     return "ok"
 
-@dp.message_handler(commands="start")
+@dp.message_handler()
 async def start(message: types.Message):
     s = ""
     if "историю про" in message.text:
         s = message.text.split("про ")[1]
+        print("hey")
 
     query = {
           "option": "Hero Story Villian",
@@ -46,5 +48,5 @@ async def start(message: types.Message):
           "tone": "Empathetic"
         }
     r = requests.post("http://212.193.50.2:777/two_field_tools", json=query)
-    print(r.text)
-    await message.answer(f"")
+    kek = r.json()['texts'][0]
+    await message.answer(kek)
