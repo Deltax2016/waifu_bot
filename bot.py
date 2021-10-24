@@ -40,7 +40,7 @@ async def start(message: types.Message):
     if "историю про" in message.text:
         s = message.text.split("про ")[1]
         print("hey")
-        await bot.send(message.from_user.id, "Подожди немного, я подумаю")
+        await bot.send_message(message.from_user.id, "Подожди немного, я подумаю")
 
     query = {
           "option": "Hero Story Villian",
